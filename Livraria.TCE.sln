@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.TCE", "Livraria.TCE\Livraria.TCE.csproj", "{08781A3F-81A0-456D-8A8D-312237B3892E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.TCE.Tests", "Livraria.TCE.Tests\Livraria.TCE.Tests.csproj", "{1F07050D-C555-4A56-971F-3E5C86177922}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{08781A3F-81A0-456D-8A8D-312237B3892E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08781A3F-81A0-456D-8A8D-312237B3892E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08781A3F-81A0-456D-8A8D-312237B3892E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F07050D-C555-4A56-971F-3E5C86177922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F07050D-C555-4A56-971F-3E5C86177922}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F07050D-C555-4A56-971F-3E5C86177922}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F07050D-C555-4A56-971F-3E5C86177922}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

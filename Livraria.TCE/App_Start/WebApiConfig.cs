@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Livraria.TCE.IoC;
+using Livraria.TCE.Repository;
+using Livraria.TCE.Repository.Interfaces;
+using ProductStore.IoC;
 using System.Web.Http;
+using Unity;
+using Unity.Lifetime;
 
 namespace Livraria.TCE
 {
@@ -9,8 +12,11 @@ namespace Livraria.TCE
     {
         public static void Register(HttpConfiguration config)
         {
-            // Serviços e configuração da API da Web
-
+            // registrar dependencias
+            var container = new UnityContainer();
+            RegistroDependencia.RegistrarDependencias(container);
+            config.DependencyResolver = new UnityResolver(container);
+           
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();
 
