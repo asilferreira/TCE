@@ -13,7 +13,6 @@ namespace Livraria.TCE.Repository
       ILivroRepositorio
     {
         EntityContext ctx = new EntityContext();
-        private IEnumerable<Livro> livros;
 
         // Adicionado o modificador "virtual" para a realização do Mock
         public virtual IEnumerable<Livro> GetAll() 
