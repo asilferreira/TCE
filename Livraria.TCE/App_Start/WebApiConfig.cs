@@ -12,6 +12,7 @@ namespace Livraria.TCE
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
             // registrar dependencias
             var container = new UnityContainer();
             RegistroDependencia.RegistrarDependencias(container);

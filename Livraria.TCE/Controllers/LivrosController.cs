@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using Livraria.TCE.Context.Entidades;
+using Livraria.TCE.Repository;
 using Livraria.TCE.Repository.Interfaces;
 using Unity.Attributes;
 
@@ -51,11 +52,74 @@ namespace Livraria.TCE.Controllers
 
         [Route("ByNome")]
         [HttpGet]
-        public IHttpActionResult GetLivrosByCriterio(string value)
+        public IHttpActionResult GetLivrosByNome(string value)
         {
             try
             {
-                var livros = LivroRepositorio.Get(g => value.Equals(g.Nome));
+                var livros = LivroRepositorio
+                    .Get(g => value.Equals(g.Nome))
+                    .OrderBy(o => o.Nome);
+
+                if (livros.Any()) return Ok(livros);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [Route("ByAutor")]
+        [HttpGet]
+        public IHttpActionResult GetLivrosByAutor(string value)
+        {
+            try
+            {
+                var livros = LivroRepositorio
+                    .Get(g => value.Equals(g.Autor))
+                    .OrderBy(o => o.Autor);
+
+                if (livros.Any()) return Ok(livros);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [Route("ByISBN")]
+        [HttpGet]
+        public IHttpActionResult GetLivrosByISBN(string value)
+        {
+            try
+            {
+                var livros = LivroRepositorio.Get(g => value.Equals(g.ISBN.ToString()));
+                if (livros.Any()) return Ok(livros);
+                else return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [Route("ByData")]
+        [HttpGet]
+        public IHttpActionResult GetLivrosByData(string value)
+        {
+            try
+            {
+                var livros = LivroRepositorio
+                    .Get(g => value.Equals(g.DataPublicacao.ToShortDateString()))
+                    .OrderBy(o => o.DataPublicacao);
+
                 if (livros.Any()) return Ok(livros);
                 else return NotFound();
             }
@@ -86,7 +150,7 @@ namespace Livraria.TCE.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
+           
             try
             {
                 LivroRepositorio.Adicionar(livro);

@@ -1,5 +1,6 @@
 ﻿using Livraria.TCE.Context.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Livraria.TCE.Repository.Interfaces
@@ -7,8 +8,8 @@ namespace Livraria.TCE.Repository.Interfaces
 
     public interface ILivroRepositorio
     {
-        IQueryable<Livro> GetAll();
-        IQueryable<Livro> Get(Func<Livro, bool> predicate);
+        IEnumerable<Livro> GetAll();
+        IEnumerable<Livro> Get(Func<Livro, bool> predicate);
         Livro Find(params object[] key);
         void Atualizar(Livro obj);
         void SalvarTodos();

@@ -13,15 +13,17 @@ namespace Livraria.TCE.Repository
       ILivroRepositorio
     {
         EntityContext ctx = new EntityContext();
+        private IEnumerable<Livro> livros;
 
-        public IQueryable<Livro> GetAll()
+        // Adicionado o modificador "virtual" para a realização do Mock
+        public virtual IEnumerable<Livro> GetAll() 
         {
             return ctx.Set<Livro>();
         }
 
-        public IQueryable<Livro> Get(Func<Livro, bool> predicate)
+        public  IEnumerable<Livro> Get(Func<Livro, bool> predicate)
         {
-            return GetAll().Where(predicate).AsQueryable();
+            return GetAll().Where(predicate);
         }
 
         public Livro Find(params object[] key)
